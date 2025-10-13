@@ -1,0 +1,6 @@
+services:   
+  nginx2:
+    ports:
+      - 8082:80 
+    environment:
+      TEST_VAR_ENV: "salut la classe"

@@ -1,0 +1,25 @@
+services:
+   nginx1:
+     image: nginx:stable-alpine
+     ports:
+      - 8080:80 
+     networks:
+      mon-super-reseau-docker:
+     volumes:
+      - ./config/nginx1:/usr/share/nginx/html:ro
+   nginx2:
+     image: nginx:stable-alpine
+     ports:
+      - 8081:80 
+     networks:
+      mon-super-reseau-docker:
+     volumes:
+      - ./config/nginx2:/usr/share/nginx/html:ro
+   nmap:
+     build:
+      context: ./dockerfiles/nmap/.
+     networks:
+      mon-super-reseau-docker:
+     entrypoint: ["tail", "-f", "/dev/null"]
+networks:
+  mon-super-reseau-docker:
